@@ -60,7 +60,9 @@ export const useAuthStore = create((set) => ({
   set({ fetchingUser: true, error: null });
 
   try {
-    const response = await axios.get(`${API_URL}/api/fetch-user`);
+    const response = await axios.get(`${API_URL}/api/fetch-user`, {
+      withCredentials: true,
+    });
     set({
       user: response.data.user,
       fetchingUser: false,
