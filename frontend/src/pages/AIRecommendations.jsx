@@ -66,9 +66,9 @@ const initialState = steps.reduce((acc,step) =>{
 
 
 const AIRecommendations = () => {
-    const [inputs, setInputs] = React.useState(initialState);
-    const [Step, setStep] = React.useState(0);
-    const [recommendation, setrecommendation] = React.useState([]);
+    const [inputs, setInputs] = useState(initialState);
+    const [Step, setStep] = useState(0);
+    const [recommendation, setrecommendation] = useState([]);
     const [isloading, setLoading] = useState(false);
 
     const handleOption = (value) => {
@@ -99,11 +99,11 @@ const AIRecommendations = () => {
 
     const userPrompt = `
 Based on the following preferences:
-- Genre: ${inputs.Genre}
-- Mood: ${inputs.Mood}
-- Decade: ${inputs.decade}
-- Language: ${inputs.Language}
-- Length: ${inputs.length} minutes
+- Genre: ${inputs["Genre Selection"]}
+- Mood: ${inputs["Mood Selection"]}
+- Decade: ${inputs["decade"]}
+- Language: ${inputs["Language"]}
+- Length: ${inputs["length"]}
 
 Return ONLY valid JSON with this format — no extra text, no explanations:
 
@@ -113,7 +113,7 @@ Return ONLY valid JSON with this format — no extra text, no explanations:
     "Movie Title 2",
     "Movie Title 3",
     "Movie Title 4",
-    "Movie Title 5"
+    "Movie Title 5",
     "Movie Title 6",
     "Movie Title 7",
     "Movie Title 8",
@@ -122,6 +122,7 @@ Return ONLY valid JSON with this format — no extra text, no explanations:
   ]
 }
 `;
+
    const result = await getAIRecommendation(userPrompt);
   setLoading(false);
 

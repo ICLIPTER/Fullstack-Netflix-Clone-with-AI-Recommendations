@@ -3,7 +3,7 @@ import axios from "axios";
 
 axios.defaults.withCredentials = true;
 
-const API_URL = "https://bibekflix.onrender.com";
+const API_URL = "http://localhost:5000";
 
 export const useAuthStore = create((set) => ({
 
@@ -37,9 +37,11 @@ export const useAuthStore = create((set) => ({
 
         try {
             const response = await axios.post(`${API_URL}/api/login`, {
-                username,
-                password,
-            });
+    username,
+    password,
+}, {
+    withCredentials: true
+});
             const {user, message} = response.data;
 
             set({user,
@@ -63,17 +65,25 @@ export const useAuthStore = create((set) => ({
     const response = await axios.get(`${API_URL}/api/fetch-user`, {
       withCredentials: true,
     });
+
     set({
       user: response.data.user,
       fetchingUser: false,
     });
   } catch (error) {
-    set({
-      error: error.response?.data?.message || "Error fetching user",
-      fetchingUser: false,
-    });
+    const message = error.response?.data?.message;
+
+    if (message === "No token provided") {
+      set({ fetchingUser: false });
+    } else {
+      set({
+        error: message || "Error fetching user",
+        fetchingUser: false,
+      });
+    }
   }
-    },
+},
+
 
     logout: async () => {
   set({ isloading: true, error: null, message: null });

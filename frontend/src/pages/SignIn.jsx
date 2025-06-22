@@ -22,8 +22,6 @@ const Signin = () => {
     }
     
 
-
-
   return (
     <div className='min-h-screen bg-cover bg-center bg-no-repeat px-4 md:px-8 py-5'
     style={
