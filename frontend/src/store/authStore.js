@@ -3,7 +3,7 @@ import axios from "axios";
 
 axios.defaults.withCredentials = true;
 
-const API_URL = "http://localhost:5000";
+const API_URL = "https://bibekflix.onrender.com";
 
 export const useAuthStore = create((set) => ({
 
