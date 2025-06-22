@@ -70,8 +70,8 @@
 </ol>
 
 <pre>
-git clone https://github.com/ezeigboemmanuel/AIFlix.git
-cd AIFlix
+git clone https://github.com/ICLIPTER/Fullstack-Netflix-Clone-with-AI-Recommendations.git
+cd Fullstack-Netflix-Clone-with-AI-Recommendations
 </pre>
 
 <ol start="2">
